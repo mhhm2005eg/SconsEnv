@@ -9,7 +9,7 @@ Env = Environment()
 FileList=['HelloWorld.c', 'Hello.c' ]
 ObjectList=[]
 
-ExtensionsToBuild='*.c'
+ExtensionsToBuild='*.cpp'
 #FilesToBuild=Glob( '.\\Src\\' +ExtensionsToBuild) # Return file objects
 FilesToBuild=[]
 
@@ -45,10 +45,15 @@ for Cfile in FilesToBuild:
 
 print (str(Config.ObjDir)+Objfile1)
 
-Program(target = Config.OutFile, source = ObjectList)
-StaticLibrary(target = Config.LibFile, source = ObjectList)	
-SharedLibrary(target = Config.DllFile, source = ObjectList)
+#if Libfiles:
+    #LibOption= " LIBS="+Libfiles+", LIBPATH="+Getfolders(Config.RecursiveLibFolders, Config.LibFolders)
+Program(target = Config.OutFile, source = ObjectList, LIBS=Libfiles, LIBPATH=Common.Getfolders(Config.RecursiveLibFolders, Config.LibFolders))
+#StaticLibrary(target = Config.LibFile, source = ObjectList)	
+#SharedLibrary(target = Config.DllFile, source = ObjectList)
 
+##########################################################
+### Help
+##########################################################
 #Program(target = OutFile, source = FilesToBuild) # Produce .exe file from a patern
 
 #Library(target = LibFile, source = FilesToBuild) #lib

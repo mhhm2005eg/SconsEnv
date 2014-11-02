@@ -71,8 +71,51 @@ def checkExistance(lst):
 		if os.path.exists(folder):
 			Outlst.append(folder)
 	return (Outlst)
+    
+def ListAppend(MainList, SubList):
+	x=0
+	while x in range(len(SubList)):
+		MainList.append(SubList[x])
+		x=x+1
+	return  MainList
+    
+
+
+def Getfiles(RecursiveFolders,DirectFolders,DirectFiles, ExtensionsToFind ):
+	FilesFound=[]
+	filesDirs=RecursiveFolders
+	for Folder in RecursiveFolders:
+		temp1=getSubdirsRecursive(os.path.abspath(Folder))
+		filesDirs = ListAppend(filesDirs, temp1)
+		
+	if DirectFolders:
+		filesDirs = ListAppend(filesDirs, DirectFolders)
+
+	for Folder1 in filesDirs:
+		if FilesFound:
+			temp = glob.glob(str(Folder1)+'/'+ExtensionsToFind)
+			FilesFound = ListAppend(FilesFound, temp)
+			
+		else:
+			FilesFound = glob.glob(str(Folder1)+'/'+ExtensionsToFind)
+		
+	if 	DirectFiles:
+		FilesFound = ListAppend(FilesFound, DirectFiles)
+		
+	return FilesFound
 	
-def ORStr(x, y):
+def Getfolders(RecursiveFolders,DirectFolders):
+	filesDirs=['.']
+	if RecursiveFolders:
+		filesDirs=RecursiveFolders
+		for Folder in RecursiveFolders:
+			temp1=getSubdirs(Folder)
+			filesDirs = ListAppend(filesDirs, temp1)
+			
+	if DirectFolders:
+		filesDirs = ListAppend(filesDirs, DirectFolders)
+	return filesDirs
+
 	outstr = x
 	outlst = list(x)
 	for i in range(50):

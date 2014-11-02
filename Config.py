@@ -11,13 +11,13 @@ DllFile="./Dll\\"+ProjectName # name of the final executable.
 ObjDir=str("./Obj/")          # Directory for the obj files.
 IncDir=str("./Inc/")
 
-RecursiveSourceFolders=["./Src"] #Folders which will be scanned recursivly for the extensions *.c
+RecursiveSourceFolders=[] #Folders which will be scanned recursivly for the extensions *.c
 SourceFolders=[] #Folders which will be scanned for the extensions *.c
-SourceFiles=[] #specific files to be built
+SourceFiles=["./Src/objectTrackingTut.cpp"] #specific files to be built
 
-RecursiveHeaderFolders=["./Inc/"] #Folders which will be scanned recursivly for the extensions *.h
-HeaderFolders=[] #Folders which will be scanned for the extensions *.h
+RecursiveHeaderFolders=["./Inc/","C:\\opencv\\build\\include"] #Folders which will be scanned recursivly for the extensions *.h
+HeaderFolders=["C:\\opencv\\build\\include\\opencv"] #Folders which will be scanned for the extensions *.h
 
-RecursiveLibFolders=["./Src"] #Folders which will be scanned recursivly for the extensions *.lib
+RecursiveLibFolders=["C:/opencv/build/x64/vc10/lib"] #Folders which will be scanned recursivly for the extensions *.lib
 LibFolders=[] #Folders which will be scanned for the extensions *.lib
 LibFiles=[] #specific files to be linked
