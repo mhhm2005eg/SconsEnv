@@ -48,8 +48,8 @@ print (str(Config.ObjDir)+Objfile1)
 #if Libfiles:
     #LibOption= " LIBS="+Libfiles+", LIBPATH="+Getfolders(Config.RecursiveLibFolders, Config.LibFolders)
 Program(target = Config.OutFile, source = ObjectList, LIBS=Libfiles, LIBPATH=Common.Getfolders(Config.RecursiveLibFolders, Config.LibFolders))
-#StaticLibrary(target = Config.LibFile, source = ObjectList)	
-#SharedLibrary(target = Config.DllFile, source = ObjectList)
+StaticLibrary(target = Config.LibFile, source = ObjectList, LIBS=Libfiles, LIBPATH=Common.Getfolders(Config.RecursiveLibFolders, Config.LibFolders))	
+SharedLibrary(target = Config.DllFile, source = ObjectList, LIBS=Libfiles, LIBPATH=Common.Getfolders(Config.RecursiveLibFolders, Config.LibFolders))
 
 ##########################################################
 ### Help
